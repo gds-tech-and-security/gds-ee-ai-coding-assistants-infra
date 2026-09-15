@@ -1,0 +1,92 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "s3:ListBucket",
+        "s3:Get*"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::gds-ee-ai-coding-assistants-infra-production-tfstate",
+      "Sid": "AllowAccessToS3Bucket"
+    },
+    {
+      "Action": [
+        "s3:PutObject",
+        "s3:Get*"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::gds-ee-ai-coding-assistants-infra-production-tfstate/*",
+      "Sid": "AllowModifyAnyObjectInStateKeyDir"
+    },
+    {
+      "Action": "s3:DeleteObject",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::gds-ee-ai-coding-assistants-infra-production-tfstate/*.tflock",
+      "Sid": "AllowDeleteTFLockFile"
+    },
+    {
+      "Action": "iam:*",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowManageIAMRolesAndPolicies"
+    },
+    {
+      "Action": "ec2:*",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowManageVPC"
+    },
+    {
+      "Action": "logs:*",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowManageLogs"
+    },
+    {
+      "Action": [
+        "ecs:*",
+        "application-autoscaling:*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowManageECS"
+    },
+    {
+      "Action": "secretsmanager:DescribeSecret",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowGetLeaderSecrets"
+    },
+    {
+      "Action": "secretsmanager:GetResourcePolicy",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowGetResourcePolicy"
+    },
+    {
+      "Action": "route53:GetHostedZone",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowGetHostedZone"
+    },
+    {
+      "Action": "route53:CreateHostedZone",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowCreateHostedZone"
+    },
+    {
+      "Action": "route53:ListResourceRecordSets",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowListRecordSets"
+    },
+    {
+      "Action": "route53:ListTagsForResource",
+      "Effect": "Allow",
+      "Resource": "*",
+      "Sid": "AllowListTagsForResource"
+    }
+  ]
+}

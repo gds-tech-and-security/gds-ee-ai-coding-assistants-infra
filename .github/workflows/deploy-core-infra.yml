@@ -1,0 +1,38 @@
+name: Deploy Core Terraform
+
+on:
+  push:
+    paths:
+      - "terraform/core/**"
+      - "terraform/env/**/common.tfvars"
+      - "terraform/env/**/core.tfvars"
+      - ".github/workflows/deploy-core-infra.yml"
+      - ".github/workflows/_shared-terraform-deploy.yml"
+
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Deployment environment"
+        required: true
+        type: environment
+
+# NOTE: This declaration defaults all GH other permissions to none.
+# - Create subsequent permissions scoped to job only after confirming with a techlead
+# - Declaration here follows the policy defined in ADR-EA007
+permissions:
+  contents: read
+  id-token: write
+  packages: none # Prevent package access (‘none’ is the default)
+
+concurrency:
+  group: core-infra
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy ${{ (github.event_name == 'workflow_dispatch' && inputs.environment) || 'sandbox' }}
+    uses: ./.github/workflows/_shared-terraform-deploy.yml
+    secrets: inherit
+    with:
+      environment: ${{ (github.event_name == 'workflow_dispatch' && inputs.environment) || 'sandbox' }}
+      working_directory: terraform/core

@@ -1,0 +1,23 @@
+# Report only these severity levels
+# Skip: LOW
+severity:
+  - UNKNOWN
+  - MEDIUM
+  - HIGH
+  - CRITICAL
+
+# Output format
+format: table
+
+# Ignore vulnerabilities without fixes available
+ignore-unfixed: false
+
+misconfiguration:
+  terraform:
+    exclude-downloaded-modules: false
+
+scan:
+  disable-telemetry: true
+  # Skip terraform temporary directories
+  skip-dirs:
+    - '**/.terraform'

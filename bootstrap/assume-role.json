@@ -1,0 +1,25 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "GithubOidcAuth",
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::871868852219:oidc-provider/token.actions.githubusercontent.com"
+      },
+      "Action": [
+        "sts:TagSession",
+        "sts:AssumeRoleWithWebIdentity"
+      ],
+      "Condition": {
+        "StringLike": {
+          "token.actions.githubusercontent.com:sub": "repo:gds-tech-and-security@230183290/gds-ee-ai-coding-assistants-infra@1243914976:environment:production"
+        },
+        "ForAllValues:StringEquals": {
+          "token.actions.githubusercontent.com:iss": "https://token.actions.githubusercontent.com",
+          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+        }
+      }
+    }
+  ]
+}
