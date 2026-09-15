@@ -32,61 +32,10 @@
       "Sid": "AllowManageIAMRolesAndPolicies"
     },
     {
-      "Action": "ec2:*",
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "AllowManageVPC"
-    },
-    {
       "Action": "logs:*",
       "Effect": "Allow",
       "Resource": "*",
       "Sid": "AllowManageLogs"
-    },
-    {
-      "Action": [
-        "ecs:*",
-        "application-autoscaling:*"
-      ],
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "AllowManageECS"
-    },
-    {
-      "Action": "secretsmanager:DescribeSecret",
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "AllowGetLeaderSecrets"
-    },
-    {
-      "Action": "secretsmanager:GetResourcePolicy",
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "AllowGetResourcePolicy"
-    },
-    {
-      "Action": "route53:GetHostedZone",
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "AllowGetHostedZone"
-    },
-    {
-      "Action": "route53:CreateHostedZone",
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "AllowCreateHostedZone"
-    },
-    {
-      "Action": "route53:ListResourceRecordSets",
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "AllowListRecordSets"
-    },
-    {
-      "Action": "route53:ListTagsForResource",
-      "Effect": "Allow",
-      "Resource": "*",
-      "Sid": "AllowListTagsForResource"
     }
   ]
 }

@@ -13,7 +13,7 @@
       ],
       "Condition": {
         "StringLike": {
-          "token.actions.githubusercontent.com:sub": "repo:gds-tech-and-security@230183290/gds-ee-ai-coding-assistants-infra@1243914976:environment:production"
+          "token.actions.githubusercontent.com:sub": "repo:gds-tech-and-security@230183290/gds-ee-ai-coding-assistants-infra@1362567784:environment:sandbox"
         },
         "ForAllValues:StringEquals": {
           "token.actions.githubusercontent.com:iss": "https://token.actions.githubusercontent.com",
